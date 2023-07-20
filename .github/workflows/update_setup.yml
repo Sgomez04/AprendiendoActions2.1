@@ -3,6 +3,7 @@ name: Update Setup Version
 on:
   pull_request:
     type: opened
+    branch: main
 
 jobs:
   update_version:
@@ -10,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with: 
+          ref: dev
 
       - name: "Obtener versión actual y calcular nueva versión"
         id: update_version
@@ -24,13 +27,9 @@ jobs:
           cat setup.py
 
       - name: "Commit changes"
-        env:
-          GH_TOKEN: ${{ secrets.PAT }}  # Nombre del secreto que creaste para el token de acceso personal
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git branch -u origin/dev
-          git remote set-url origin "https://$GH_TOKEN@github.com/Sgomez04/AprendiendoActions2.0.git"
           git add setup.py
           git commit -m "Actualizar versión a ${{ env.NEW_VERSION_PY }}"
-          git push origin dev
+          git push origin HEAD:dev
