@@ -2,14 +2,13 @@ name: Update Setup Version
 
 on:
   pull_request:
-    type: 
+    types: 
       - opened
-    branch: 
+    branches: 
       - main
 
 jobs:
   update_version:
-    if: github.event_name == 'pull_request' && github.event.action == 'opened'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
