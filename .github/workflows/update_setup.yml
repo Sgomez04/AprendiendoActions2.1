@@ -2,7 +2,7 @@ name: Update Setup Version
 
 on:
   pull_request:
-    type: opened
+    type: created
     branch: main
 
 jobs:
