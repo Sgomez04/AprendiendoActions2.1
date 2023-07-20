@@ -2,9 +2,10 @@ name: Update Setup Version
 
 on:
   pull_request:
-    type: [created]
+    type: 
+      - opened
     branch: 
-     - main
+      - main
 
 jobs:
   update_version:
