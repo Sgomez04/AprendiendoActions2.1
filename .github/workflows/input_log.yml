@@ -1,0 +1,26 @@
+name: Generar JSON
+
+on:
+workflow_dispatch:
+jobs:
+  generate_json:
+    runs-on: ubuntu-latest
+
+    inputs:
+      nombre:
+        description: "Nombre para el JSON"
+        required: true
+      edad:
+        description: "Edad para el JSON"
+        required: true
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Crear JSON
+        run: |
+          echo '{ "${{ inputs.nombre }}": "${{ inputs.nombre }}", "${{ inputs.edad }}": "${{ inputs.edad }}" }' > output.json
+
+      - name: Mostrar contenido del JSON
+        run: cat output.json
