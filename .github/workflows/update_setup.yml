@@ -1,7 +1,7 @@
 name: Update Setup Version
 
 on:
-  pull_request_target:
+  pull_request:
     type: 
       - opened
     branch: 
@@ -9,6 +9,7 @@ on:
 
 jobs:
   update_version:
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
