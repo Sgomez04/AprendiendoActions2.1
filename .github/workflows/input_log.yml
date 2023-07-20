@@ -8,13 +8,14 @@ jobs:
     runs-on: ubuntu-latest
 
     inputs:
-      environment:
       nombre:
         description: "Nombre para el JSON"
         required: true
+        type: nombre
       edad:
         description: "Edad para el JSON"
         required: true
+        type: edad
 
     steps:
       - name: Checkout código
