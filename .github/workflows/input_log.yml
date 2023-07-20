@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       nombre:
-        description: "Nombre para el JSON"
+        description: "Nombre del usuario"
         required: true
       edad:
-        description: "Edad para el JSON"
+        description: "Edad del usuario"
         required: true
 jobs:
   generate_json:
@@ -18,7 +18,7 @@ jobs:
 
       - name: Crear JSON
         run: |
-          echo '{ "${{ inputs.nombre }}": "${{ inputs.nombre }}", "${{ inputs.edad }}": "${{ inputs.edad }}" }' > output.json
+          echo '{ "nombre": "${{ inputs.nombre }}", "edad": "${{ inputs.edad }}" }' > output.json
 
       - name: Mostrar contenido del JSON
         run: cat output.json
