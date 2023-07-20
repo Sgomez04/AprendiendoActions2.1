@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     inputs:
+      environment:
       nombre:
         description: "Nombre para el JSON"
         required: true
